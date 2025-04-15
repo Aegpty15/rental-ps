@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Harga - Rental PS</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .harga-list, .form-hitung {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+    }
+
+    .harga-list p {
+      margin: 8px 0;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    label, select, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 100px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #2e3a59;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e2a45;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .content-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Daftar Harga</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="harga.html">Daftar Harga</a>
+      <a href="pemesanan.html">Pemesanan</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="content-wrapper">
+        <section class="harga-list">
+          <h2>Harga Penyewaan</h2>
+          <p>PS4 - Rp10.000 / jam</p>
+          <p>PS5 - Rp15.000 / jam</p>
+          <p>Member Harian - Rp50.000 / 6 jam</p>
+          <p>Member Mingguan - Rp250.000 / minggu</p>
+        </section>
+
+        <section class="form-hitung">
+          <h2>Hitung Total Pesanan</h2>
+          <form onsubmit="event.preventDefault(); hitungTotal();">
+            <label for="tipe">Pilih Jenis Sewa:</label>
+            <select id="tipe">
+              <option value="ps4">PS4 - Rp10.000/jam</option>
+              <option value="ps5">PS5 - Rp15.000/jam</option>
+              <option value="harian">Member Harian - Rp50.000/6 jam</option>
+              <option value="mingguan">Member Mingguan - Rp250.000/minggu</option>
+            </select>
+
+            <label for="jumlah">Berapa Jam Sewa:</label>
+            <input type="number" id="jumlah" min="1" value="1" required />
+
+            <button type="submit">Hitung Total</button>
+          </form>
+
+          <div class="result" id="hasilTotal"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rental PS Bhineka</p>
+  </footer>
+
+  <script>
+    function hitungTotal() {
+      const tipe = document.getElementById("tipe").value;
+      const jumlah = parseInt(document.getElementById("jumlah").value);
+      let harga = 0;
+
+      switch (tipe) {
+        case "ps4":
+          harga = 10000;
+          break;
+        case "ps5":
+          harga = 15000;
+          break;
+        case "harian":
+          harga = 50000;
+          break;
+        case "mingguan":
+          harga = 250000;
+          break;
+      }
+
+      const total = harga * jumlah;
+      const hasil = document.getElementById("hasilTotal");
+      hasil.innerHTML = `Total Pembayaran: Rp${total.toLocaleString("id-ID")}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pemesanan - Rental PS</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 5px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #7b00cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1e2a45;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Form Pemesanan</h1>
+    <form id="formPemesanan" onsubmit="event.preventDefault(); kirimPemesanan();">
+      <label for="nama">Nama Pemesan:</label>
+      <input type="text" id="nama" name="nama" required />
+
+      <label for="sewa">Jenis Sewa:</label>
+      <select id="sewa" name="sewa" required>
+        <option value="PS4">PS4 - Rp10.000/jam</option>
+        <option value="PS5">PS5 - Rp15.000/jam</option>
+        <option value="Harian">Member Harian - Rp50.000/6 jam</option>
+        <option value="Mingguan">Member Mingguan - Rp250.000/minggu</option>
+      </select>
+
+      <label for="durasi">Durasi / Jumlah (jam / hari):</label>
+      <input type="number" id="durasi" name="durasi" min="1" required />
+
+      <label for="waktu">Waktu Sewa:</label>
+      <input type="datetime-local" id="waktu" name="waktu" required />
+
+      <label for="kontak">Kontak (HP/WA):</label>
+      <input type="tel" id="kontak" name="kontak" required />
+
+      <label for="catatan">Catatan Tambahan:</label>
+      <textarea id="catatan" name="catatan" rows="3"></textarea>
+
+      <button type="submit">Kirim Pesanan</button>
+    </form>
+  </div>
+
+  <script>
+    function kirimPemesanan() {
+      const nama = document.getElementById("nama").value;
+      const sewa = document.getElementById("sewa").value;
+      const durasi = document.getElementById("durasi").value;
+      const waktu = document.getElementById("waktu").value;
+      const kontak = document.getElementById("kontak").value;
+      const catatan = document.getElementById("catatan").value;
+
+      alert(`Terima kasih! Pesanan Anda akan diproses. Kami akan menghubungi Anda.`);
+      setTimeout(function() {
+        window.location.href = "index.html"; 
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
